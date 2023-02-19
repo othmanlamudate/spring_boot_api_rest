@@ -13,8 +13,7 @@ interface UsersRepository:JpaRepository<User,Int> {
   @Query("select * from user where email = ? and password = ?",nativeQuery=true)
   fun checkUser(e: String, p: String): User
 
-  @Modifying
-  @Query("DELETE FROM user  WHERE id=?", nativeQuery = true)
-  fun deleteUser(id:Long):Int
+
+
 
 }

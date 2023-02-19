@@ -41,8 +41,20 @@ class UserController(private val up:UsersRepository) {
     }
 
     @DeleteMapping("/delete")
-    fun deleteUser(@PathVariable id:Long){
-        this.up.deleteUser(id)
+    fun deleteUser(@RequestParam("id") id:Int){
+        var d=Data(up)
+        d.delete(id)
+    }
+
+    @PutMapping("/update")
+    fun updateUser(id:Int,email:String,password:String,nom:String,prenom:String,age:String,image:String):Boolean{
+
+        var d=Data(up)
+        var ex=d.update(id,email,password,nom,prenom,age,image)
+        if(ex){
+            return true
+        }
+        return false
     }
 
 }
