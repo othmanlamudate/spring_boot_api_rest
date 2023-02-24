@@ -1,0 +1,6 @@
+services:
+  - name: spring_boot_api_rest
+    buildCommand: ./gradlew build
+    startCommand: java -jar build/libs/user-0.0.1-SNAPSHOT-plain.jar
+    env:
+      JAVA_OPTS: "-Dserver.port=$PORT"
